@@ -20,9 +20,19 @@ defmodule Cards do
     end
 
     def load(filename) do
+
       {status, binary} = File.read(filename) #read the file that returns tuple with two list. in here use pattern maching with left side.
-      :erlang.binary_to_term(binary) #turn back to binary
+       
+      case status do
+        :ok -> :erlang.binary_to_term binary
+        :error -> "This file dose not exist"
+      end
+          
+     
+      #:erlang.binary_to_term(binary) #turn back to binary
     end
+
+
    
     def shuffle(deck) do
         Enum.shuffle(deck)
