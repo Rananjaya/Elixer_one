@@ -8,7 +8,9 @@ defmodule Cards do
      end
    end
 
-
+    def deal(deck, hand_size) do
+      Enum.split(deck, hand_size)
+    end
   
     def shuffle(deck) do
         Enum.shuffle(deck)
